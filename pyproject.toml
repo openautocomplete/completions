@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "completions"
+name = "comp"
 version = "0.1.0"
 description = ""
 authors = ["Alexander Shishenko <alex@shishenko.com>"]
