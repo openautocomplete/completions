@@ -1,0 +1,74 @@
+{
+  "openautocompletion": {
+    "version": "1.0"
+  },
+  "components": {
+    "arguments": {
+      "volume": {"name": "volume", "description": "Specifies the mount point, volume name, or drive letter (followed by a colon) of the drive that you want to format. If you do not specify any of the following command-line options, format uses the volume type to determine the default format for the disk."},
+      "fs": {"name": "filesystem"},
+      "label": {"name": "label"},
+      "unitsize": {"name": "unitsize"},
+      "size": {"name": "size"},
+      "tracks": {"name": "tracks"},
+      "sectors": {"name": "sectors"},
+      "passes": {"name": "passes"}
+    },
+    "options": {
+      "fs": {"names_long": ["fs"], "description": "Specifies the type of file system (FAT, FAT32, NTFS)."},
+      "v" : {"names_long": ["v"], "description": "Specifies the volume label. If you omit the /v command-line option or use it without specifying a volume label, format prompts you for the volume label after the formatting is complete. Use the syntax /v: to prevent the prompt for a volume label. If you use a single format command to format more than one disk, all of the disks will be given the same volume label."},
+      "q" : {"names_long": ["q"], "description": "Performs a quick format. Deletes the file table and the root directory of a previously formatted volume, but does not perform a sector-by-sector scan for bad areas. You should use the /q command-line option to format only previously formatted volumes that you know are in good condition. Note that /q overrides /p."},
+      "a" : {"names_long": ["a"], "description": "Specifies the allocation unit size to use on FAT, FAT32, or NTFS volumes. If you don't specify unitsize, it's chosen based on volume size. Default settings are strongly recommended for general use. The following list presents valid values for NTFS, FAT, and FAT32 unitsize:\n512\n1024\n2048\n4096\n8192\n16K\n32K\n64K\nFAT and FAT32 also support 128K and 256K for a sector size greater than 512 bytes."},
+      "f" : {"names_long": ["f"], "description": "Specifies the size of the floppy disk to format. When possible, use this command-line option instead of the /t and /n command-line options. Windows accepts the following values for size:\n- 1440 or 1440k or 1440kb\n- 1.44 or 1.44m or 1.44mb\n- 1.44-MB, double-sided, quadruple-density, 3.5-inch disk"},
+      "t" : {"names_long": ["t"], "description": "Specifies the number of tracks on the disk. When possible, use the /f command-line option instead. If you use the /t option, you must also use the /n option. These options together provide an alternative method of specifying the size of the disk that is being formatted. This option is not valid with the /f option."},
+      "n" : {"names_long": ["n"], "description": "Specifies the number of sectors per track. When possible, use the /f command-line option instead of /n. If you use /n, you must also use /t. These two options together provide an alternative method of specifying the size of the disk that is being formatted. This option is not valid with the /f option."},
+      "p" : {"names_long": ["p"], "description": "Zeros every sector on the volume for the number of passes specified. This option is not valid with the /q option."},
+      "c" : {"names_long": ["c"], "description": "NTFS only. Files created on the new volume will be compressed by default."},
+      "x" : {"names_long": ["x"], "description": "Causes the volume to dismount, if necessary, before it is formatted. Any open handles to the volume will no longer be valid."},
+      "?" : {"names_long": ["?"], "description": "Displays help at the command prompt."}
+    },
+    "commands": {}
+  },
+  "cli": {
+    "name": "format",
+    "option_separators_long": [":"],
+    "option_separators_short": [":"],
+    "option_prefix_long":  "/",
+    "option_prefix_short": "/",
+    "pattern_groups": [
+      {"type": "group", "patterns": [
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/fs"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/fs"}}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/a"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/unitsize"}}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/c"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/x"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
+      ]},
+      {"type": "group", "patterns": [
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/f"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/size"}}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
+      ]},
+      {"type": "group", "patterns": [
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}},
+        {"type": "group", "optional": true, "patterns": [
+          {"type": "option", "option": {"$ref": "#/components/options/t"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/tracks"}}},
+          {"type": "option", "option": {"$ref": "#/components/options/n"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/sectors"}}}
+        ]},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
+      ]},
+      {"type": "group", "patterns": [
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}}
+      ]},
+      {"type": "group", "patterns": [
+        {"type": "option", "option": {"$ref": "#/components/options/?"}}
+      ]}
+    ]
+  }
+}

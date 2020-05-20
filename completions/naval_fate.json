@@ -1,0 +1,68 @@
+{
+  "openautocompletion": {
+    "version": "1.0"
+  },
+  "components": {
+    "arguments": {
+      "x": {"name": "x"},
+      "y": {"name": "y"},
+      "kn": {"name": "kn"},
+      "name": {"name": "name"}
+    },
+    "options": {
+      "help": {"names_short": ["h"], "names_long": ["help"], "description": "Show this screen."},
+      "version": {"names_long": ["version"], "description": "Show version."},
+      "speed": {"names_long": ["speed"], "description": "Speed in knots [default: 10]."},
+      "moored": {"names_long": ["moored"], "description": "Moored (anchored) mine."},
+      "drifting": {"names_long": ["drifting"], "description": "Drifting mine."}
+    },
+    "commands": {
+      "ship": {"names": ["ship"]},
+      "ship_new": {"names": ["new"]},
+      "ship_move": {"names": ["move"]},
+      "ship_shoot": {"names": ["shoot"]},
+      "mine": {"names": ["mine"]},
+      "mine_set": {"names": ["set"]},
+      "mine_remove": {"names": ["remove"]}
+    }
+  },
+  "cli": {
+    "name": "naval_fate",
+    "pattern_groups": [
+      {"type": "group", "patterns": [
+        {"type": "command", "command": {"$ref": "#/components/commands/ship"}},
+        {"type": "command", "command": {"$ref": "#/components/commands/ship_new"}},
+        {"type": "argument", "repeated": true, "argument": {"$ref": "#/components/arguments/name"}}
+      ]},
+      {"type": "group", "patterns": [
+        {"type": "command", "command": {"$ref": "#/components/commands/ship"}},
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/name"}},
+        {"type": "command", "command": {"$ref": "#/components/commands/ship_move"}},
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/x"}},
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/y"}},
+        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/speed"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/kn"}}}
+      ]},
+      {"type": "group", "patterns": [
+        {"type": "command", "command": {"$ref": "#/components/commands/ship"}},
+        {"type": "command", "command": {"$ref": "#/components/commands/ship_shoot"}},
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/x"}},
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/y"}}
+      ]},
+      {"type": "group", "patterns": [
+        {"type": "command", "command": {"$ref": "#/components/commands/mine"}},
+        {"type": "group", "exclusive": true, "patterns": [
+          {"type": "command", "command": {"$ref": "#/components/commands/mine_set"}},
+          {"type": "command", "command": {"$ref": "#/components/commands/mine_remove"}}
+        ]},
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/x"}},
+        {"type": "argument", "argument": {"$ref": "#/components/arguments/y"}},
+        {"type": "group", "exclusive": true, "optional": true, "patterns": [
+          {"type": "option", "option": {"$ref": "#/components/options/moored"}},
+          {"type": "option", "option": {"$ref": "#/components/options/drifting"}}
+        ]}
+      ]},
+      {"type": "group", "patterns": [{"type": "option", "option": {"$ref": "#/components/options/help"}}]},
+      {"type": "group", "patterns": [{"type": "option", "option": {"$ref": "#/components/options/version"}}]}
+    ]
+  }
+}
