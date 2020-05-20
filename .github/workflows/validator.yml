@@ -25,4 +25,4 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
         poetry install
-    - poetry run oactool validate completions/*
+    - run: poetry run oactool validate completions/*
