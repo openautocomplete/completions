@@ -30,44 +30,41 @@
   },
   "cli": {
     "name": "format",
-    "option_separators_long": [":"],
-    "option_separators_short": [":"],
-    "option_prefix_long":  "/",
-    "option_prefix_short": "/",
+    "separators_long": [":"], "prefix_long":  "/",
     "pattern_groups": [
       {"type": "group", "patterns": [
         {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/fs"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/fs"}}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/a"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/unitsize"}}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/c"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/x"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/fs"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/fs"}}},
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
+        {"type": "option", "optional": true, "prefix_long": "/", "option": {"$ref": "#/components/options/q"}},
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/a"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/unitsize"}}},
+        {"type": "option", "optional": true, "prefix_long": "/", "option": {"$ref": "#/components/options/c"}},
+        {"type": "option", "optional": true, "prefix_long": "/", "option": {"$ref": "#/components/options/x"}},
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
       ]},
       {"type": "group", "patterns": [
         {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/f"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/size"}}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
+        {"type": "option", "optional": true, "prefix_long": "/", "option": {"$ref": "#/components/options/q"}},
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/f"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/size"}}},
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
       ]},
       {"type": "group", "patterns": [
         {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}},
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/v"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/label"}}},
+        {"type": "option", "optional": true, "prefix_long": "/", "option": {"$ref": "#/components/options/q"}},
         {"type": "group", "optional": true, "patterns": [
-          {"type": "option", "option": {"$ref": "#/components/options/t"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/tracks"}}},
-          {"type": "option", "option": {"$ref": "#/components/options/n"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/sectors"}}}
+          {"type": "option", "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/t"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/tracks"}}},
+          {"type": "option", "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/n"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/sectors"}}}
         ]},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
+        {"type": "option", "optional": true, "separators_long": [":"], "prefix_long": "/", "option": {"$ref": "#/components/options/p"}, "argument": {"type": "argument", "argument": {"$ref": "#/components/arguments/passes"}}}
       ]},
       {"type": "group", "patterns": [
         {"type": "argument", "argument": {"$ref": "#/components/arguments/volume"}},
-        {"type": "option", "optional": true, "option": {"$ref": "#/components/options/q"}}
+        {"type": "option", "optional": true, "prefix_long": "/", "option": {"$ref": "#/components/options/q"}}
       ]},
       {"type": "group", "patterns": [
-        {"type": "option", "option": {"$ref": "#/components/options/?"}}
+        {"type": "option", "prefix_long": "/", "option": {"$ref": "#/components/options/?"}}
       ]}
     ]
   }
